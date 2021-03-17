@@ -1,9 +1,10 @@
 # VendingMachineCapstone
+
 * Developed a command line vending machine application using File I/O and OOP principles.
 * Includes delimited input file processing, log functionality, inventory and credit system. 
-* Completed bonus option that generated sales report written to a text file uniquely named with SimpleDateFormat.
-* I used an abstract class to act as a template for the 4 kinds of vending machine items. 
-* The items are instantiated with a method that takes a pipe delimited text file and reads it with the Scanner class.
+* Completed bonus option that generated sales report using PrintWriter class.
+* Wrote 24 JUnit tests to test all methods written.
+* Used an abstract class to act as a template for the 4 kinds of vending machine items. 
 
 ## User can:
 
@@ -12,10 +13,11 @@
 * See their current balance continually while adding money and purchasing items.
 * Purchase items until they are sold out.
 * Receive their change in the smallest amount of coins.
+* Generate a sales report that lists items that were bought, how many, and the total sales amount.
 
 ## The program also:
 
-* Logs each time the user adds money, buys an item, or requests change timestamped with SimpleDateFormat class.
-* This logger creates a log.txt file with PrintWriter class that gets overridden each time the program runs.
-* Can generate a sales report that shows what items were purchased, how many, and the total sales amount.
-* This sales report is uniquely named with SimpleDateFormat and persists even after program is started again.
+* "Stocks" the vending machine by instantiating objects with a method that takes a pipe delimited CSV file and reads it with the Scanner class.
+* Logs each time the user adds money, buys an item, or requests change time stamped with SimpleDateFormat class.
+* Logger creates a log.txt file with PrintWriter class that gets overridden each time the program runs (as per requirement).
+* The sales report is uniquely named with SimpleDateFormat and persists even after program is started again.
