@@ -5,7 +5,7 @@ I used an abstract class to act as a template for the 4 kinds of vending machine
 
 User can:
 
-List all products with their quantity.
+List all products with their quantity.\n
 Add money into the machine to purchase items.
 See their current balance continually while purchasing items.
 Purchase items until they are sold out.
