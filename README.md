@@ -17,5 +17,5 @@
 
 * Logs each time the user adds money, buys an item, or requests change timestamped with SimpleDateFormat class.
 * This logger creates a log.txt file with PrintWriter class that gets overridden each time the program runs.
-* Can generate a sales report that shows what items were purchased, how many, and the amount of total purchases.
-* This sales report is uniquely named with SimpleDateFormat and persists eveb after program is started again.
+* Can generate a sales report that shows what items were purchased, how many, and the total sales amount.
+* This sales report is uniquely named with SimpleDateFormat and persists even after program is started again.
