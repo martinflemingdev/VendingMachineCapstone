@@ -9,7 +9,7 @@
 
 * List all products and their quantity.
 * Add money into the machine to purchase items.
-* See their current balance continually while purchasing items.
+* See their current balance continually while adding money and purchasing items.
 * Purchase items until they are sold out.
 * Receive their change in the smallest amount of coins.
 
