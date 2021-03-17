@@ -7,7 +7,7 @@
 
 ## User can:
 
-* List all products with their quantity.
+* List all products and their quantity.
 * Add money into the machine to purchase items.
 * See their current balance continually while purchasing items.
 * Purchase items until they are sold out.
