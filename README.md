@@ -2,7 +2,8 @@
 * Developed a command line vending machine application using File I/O and OOP principles.
 * Includes delimited input file processing, log functionality, inventory and credit system. 
 * Completed bonus option that generated sales report written to a text file uniquely named with SimpleDateFormat.
-* I used an abstract class to act as a template for the 4 kinds of vending machine items. The items are instantiated with a method that takes a pipe delimited text file and reads it with the Scanner class.
+* I used an abstract class to act as a template for the 4 kinds of vending machine items. 
+* The items are instantiated with a method that takes a pipe delimited text file and reads it with the Scanner class.
 
 ## User can:
 
