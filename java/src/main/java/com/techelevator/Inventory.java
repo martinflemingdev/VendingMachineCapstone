@@ -62,12 +62,10 @@ public class Inventory {
 		} return inventoryMap;
 	}
 
-	// Getter that allows access to current inventory (price, quantity)
+	// Getter that allows access to current inventory
 	public Map<String, VendingMachineItem> getCurrentInventory(){
 		return inventoryMap;
 	}
-	
-	// Methods
 	
 	// Prints current inventory to console 
 	public void displayItems() {
