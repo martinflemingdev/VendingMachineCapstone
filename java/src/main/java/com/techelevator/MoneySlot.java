@@ -26,7 +26,6 @@ public class MoneySlot {
 	
 	public void feedMoney(BigDecimal money) {
 		balance = balance.add(money);
-		//balance += money;
 	}
 
 	public void spendMoney(BigDecimal money) {
