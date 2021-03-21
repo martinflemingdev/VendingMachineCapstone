@@ -33,7 +33,7 @@ public class MoneySlot {
 	}
 
 	public BigDecimal checkPurchase(BigDecimal money) {
-		BigDecimal checkingMoney = balance.subtract(money);
+		BigDecimal checkingMoney = getBalance().subtract(money);
 		return checkingMoney;
 	}
 
