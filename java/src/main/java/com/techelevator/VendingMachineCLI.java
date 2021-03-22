@@ -90,11 +90,11 @@ public class VendingMachineCLI {
 							for (Map.Entry<String, VendingMachineItem> entry : inventory.getCurrentInventory().entrySet()) {
 								if (slotString.equalsIgnoreCase(entry.getKey())) {
 	/*  Checks if SOLD OUT  */					if (entry.getValue().getQuantity().equals("SOLD OUT")) {
-										VME.soldOutException();
+										System.out.println("\n" + "Sorry, we are SOLD OUT of that item!");
 									} else {
 										BigDecimal currentPriceFromString = new BigDecimal(entry.getValue().getPrice());
 	/*  Checks for sufficient funds  */					if (moneySlot.checkPurchase(currentPriceFromString).compareTo(BigDecimal.ZERO) < 0 ) {
-											VME.insufficientFundsException();
+											System.out.println("\n" + "Sorry, you do not have enough money! Feed me money!");
 										} else {
 	/*  Sells item and updates all  */						logger.log(entry.getValue().getName() + " " + slotString.toUpperCase(), moneySlot.getBalance().toString(), moneySlot.getBalance().subtract(currentPriceFromString).toString());
 											moneySlot.spendMoney(currentPriceFromString);
@@ -112,10 +112,10 @@ public class VendingMachineCLI {
 						}
 	/*  Gives  */	} else if (choicePurchase.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 	/*  Change */		System.out.println("\n" + "Calculating change for $" + ((moneySlot.getBalance())).setScale(2) + " ..."+"\n");
-						logger.log("GIVE CHANGE:", moneySlot.getBalance().toString(), "0.00");
-						moneySlot.giveChange();
-						moneySlot.displayCurrentBalance();
-						purchase = false;
+				logger.log("GIVE CHANGE:", moneySlot.getBalance().toString(), "0.00");
+				moneySlot.giveChange();
+				moneySlot.displayCurrentBalance();
+				purchase = false;
 					}
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
