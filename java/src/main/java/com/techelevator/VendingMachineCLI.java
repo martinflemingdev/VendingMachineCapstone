@@ -48,18 +48,18 @@ public class VendingMachineCLI {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				inventory.displayItems(); 	
+/* Displays items */		inventory.displayItems(); 	
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				boolean purchase = true;
 				while (purchase) {
-					moneySlot.displayCurrentBalance();
+/* Displays balance */			moneySlot.displayCurrentBalance();
 					String choicePurchase = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 					if (choicePurchase.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 						boolean feed = true;
 						while (feed) {
 							moneySlot.displayCurrentBalance();
 							String choiceFeedMoney = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU_OPTIONS);
-	/*  Feed Money	*/		if (choiceFeedMoney.equals(ONE_DOLLAR)) {
+/*  Feed Money	*/					if (choiceFeedMoney.equals(ONE_DOLLAR)) {
 								logger.log("FEED MONEY:", moneySlot.getBalance().toString(), moneySlot.getBalance().add(BigDecimal.valueOf(1.00)).toString());
 								moneySlot.feedMoney(BigDecimal.valueOf(1.00));
 							} else if (choiceFeedMoney.equals(TWO_DOLLAR)) { 
@@ -75,27 +75,28 @@ public class VendingMachineCLI {
 								feed = false; }
 						}
 					} else if (choicePurchase.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
-						inventory.displayItems();	// Displays items for purchase
+/* Displays items for purchase	*/		inventory.displayItems();	
 						moneySlot.displayCurrentBalance();
 						Scanner purchaseScanner = new Scanner(System.in);
 						System.out.print("Please choose a slot >>> ");
 						String slotString = purchaseScanner.nextLine();
 						boolean validSlot = false;
 						for (Map.Entry<String, VendingMachineItem> entry : inventory.getCurrentInventory().entrySet()) {
-/*  Checks input  */		if ((slotString.equalsIgnoreCase(entry.getKey()))) {
+	/*  Checks input  */				if ((slotString.equalsIgnoreCase(entry.getKey()))) {
 								validSlot = true; 
 							}
-						} if (validSlot == true) {
+						} 
+						if (validSlot) {
 							for (Map.Entry<String, VendingMachineItem> entry : inventory.getCurrentInventory().entrySet()) {
 								if (slotString.equalsIgnoreCase(entry.getKey())) {
-/*  Checks if SOLD OUT  */			if (entry.getValue().getQuantity().equals("SOLD OUT")) {
+	/*  Checks if SOLD OUT  */					if (entry.getValue().getQuantity().equals("SOLD OUT")) {
 										VME.soldOutException();
 									} else {
 										BigDecimal currentPriceFromString = new BigDecimal(entry.getValue().getPrice());
-/*  Checks for sufficient funds  */		if (moneySlot.checkPurchase(currentPriceFromString).compareTo(BigDecimal.ZERO) < 0 ) {
+	/*  Checks for sufficient funds  */					if (moneySlot.checkPurchase(currentPriceFromString).compareTo(BigDecimal.ZERO) < 0 ) {
 											VME.insufficientFundsException();
 										} else {
-/*  Sells item and updates all  */			logger.log(entry.getValue().getName() + " " + slotString.toUpperCase(), moneySlot.getBalance().toString(), moneySlot.getBalance().subtract(currentPriceFromString).toString());
+	/*  Sells item and updates all  */						logger.log(entry.getValue().getName() + " " + slotString.toUpperCase(), moneySlot.getBalance().toString(), moneySlot.getBalance().subtract(currentPriceFromString).toString());
 											moneySlot.spendMoney(currentPriceFromString);
 											shoppingCart.purchaseItem(entry.getValue().getName());
 											shoppingCart.addToTotalSales(currentPriceFromString);
@@ -106,7 +107,7 @@ public class VendingMachineCLI {
 								}	
 							}
 						}
-						if (validSlot == false) {
+						if (!validSlot) {
 							System.out.println("\n" + "*** " + slotString + " is not a valid option ***");
 						}
 	/*  Gives  */	} else if (choicePurchase.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
