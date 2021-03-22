@@ -82,21 +82,21 @@ public class VendingMachineCLI {
 						String slotString = purchaseScanner.nextLine();
 						boolean validSlot = false;
 						for (Map.Entry<String, VendingMachineItem> entry : inventory.getCurrentInventory().entrySet()) {
-	/*  Checks input  */				if ((slotString.equalsIgnoreCase(entry.getKey()))) {
+/*  Checks input  */					if ((slotString.equalsIgnoreCase(entry.getKey()))) {
 								validSlot = true; 
 							}
 						} 
 						if (validSlot) {
 							for (Map.Entry<String, VendingMachineItem> entry : inventory.getCurrentInventory().entrySet()) {
 								if (slotString.equalsIgnoreCase(entry.getKey())) {
-	/*  Checks if SOLD OUT  */					if (entry.getValue().getQuantity().equals("SOLD OUT")) {
+/*  Checks if SOLD OUT  */						if (entry.getValue().getQuantity().equals("SOLD OUT")) {
 										System.out.println("\n" + "Sorry, we are SOLD OUT of that item!");
 									} else {
 										BigDecimal currentPriceFromString = new BigDecimal(entry.getValue().getPrice());
-	/*  Checks for sufficient funds  */					if (moneySlot.checkPurchase(currentPriceFromString).compareTo(BigDecimal.ZERO) < 0 ) {
+/*  Checks for sufficient funds  */						if (moneySlot.checkPurchase(currentPriceFromString).compareTo(BigDecimal.ZERO) < 0 ) {
 											System.out.println("\n" + "Sorry, you do not have enough money! Feed me money!");
 										} else {
-	/*  Sells item and updates all  */						logger.log(entry.getValue().getName() + " " + slotString.toUpperCase(), moneySlot.getBalance().toString(), moneySlot.getBalance().subtract(currentPriceFromString).toString());
+/*  Sells item and updates all  */							logger.log(entry.getValue().getName() + " " + slotString.toUpperCase(), moneySlot.getBalance().toString(), moneySlot.getBalance().subtract(currentPriceFromString).toString());
 											moneySlot.spendMoney(currentPriceFromString);
 											shoppingCart.purchaseItem(entry.getValue().getName());
 											shoppingCart.addToTotalSales(currentPriceFromString);
@@ -110,8 +110,8 @@ public class VendingMachineCLI {
 						if (!validSlot) {
 							System.out.println("\n" + "*** " + slotString + " is not a valid option ***");
 						}
-	/*  Gives  */	} else if (choicePurchase.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
-	/*  Change */		System.out.println("\n" + "Calculating change for $" + ((moneySlot.getBalance())).setScale(2) + " ..."+"\n");
+/*  Gives  */		} else if (choicePurchase.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+/*  Change */			System.out.println("\n" + "Calculating change for $" + ((moneySlot.getBalance())).setScale(2) + " ..."+"\n");
 				logger.log("GIVE CHANGE:", moneySlot.getBalance().toString(), "0.00");
 				moneySlot.giveChange();
 				moneySlot.displayCurrentBalance();
